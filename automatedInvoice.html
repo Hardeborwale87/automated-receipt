@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dth XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dth/xhtml1-transitional.dth">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>e-receipt</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>                       
+<script>
+
+</script>
+<style type="text/css">
+  body{
+   /* background-image: url(iphone-1067991-1920-1920x1440-800x600.jpg);
+    background-size:cover;
+    background-attachment:fixed;*/
+    background: rgb(12, 193, 179);
+  }
+  table{
+    margin-top:-5px;
+  }
+  #customerSign, #attendantSign{
+    border-width: 0 0 1px 0;
+    border-color: #000000;
+    text-align: center;
+    font-size: 16px;
+    background: none;
+    width: 70%;
+    color:#fff;
+  }
+  .table{
+    background:#eee;
+    color:#000000;
+    background:none;
+  }
+  #E{
+    font-size:40px;
+    color:tomato;
+  }
+  #R{
+    font-size:20px;
+    color:teal;
+  }
+  .table input{
+    width: 100%;
+    color: #000000;
+    font-weight: bold;
+  } 
+  table.table th.hTitle{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 36px;
+  }
+  #hTitle{
+    width: auto;
+  }
+  p{
+    font-size:20px;
+    font-weight:bold;
+  }
+</style>
+</head>
+
+<body class="body">
+              <!-- <div class="container-fluid"> -->
+                         	<table id="table" class="table table-bordered">
+                            <thead>
+                              <tr id="hTitle">
+                                <th class="text-center" colspan="7" style="background-color:#E9ECEF"><span id="E">e</span>-<span id="R">receipt</span></th>
+                              </tr>
+
+                               <tr>
+                            <th class="text-center">S/N</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">Amount/Unit</th>
+                            <th class="text-center">Total</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                              
+                            </tbody>
+                            </table>
+
+                             <div class="mt-2">
+                                <button id="add" class="btn btn-success">+</button>
+                                <button id="minus" class="btn btn-danger">-</button>
+                          </div>
+              </div>
+
+       <div class="container-fluid">
+        <!-- <div class="col-md-4">
+        </div>
+        <div class="col-md-4" style="text-align: right">
+          
+        </div> -->
+                   <div class="col-md-4 float-right mt">
+                             <div class="form-group grandGroup mt-3">
+                                <label for="grand">Grand Total(N) :</label>
+                                <input type="text" id="grandTotal" name="" class="form-control">
+                            </div>
+                            <div class="form-group aPaidGroup">
+                                <label for="paid">Amount Paid(N) :</label>
+                                <input type="text" id="grandAmount" name="" class="form-control">
+                            </div>
+                            <div class="form-group changeGroup">
+                                <label for="change">Change(N) :</label>
+                                <input type="text" id="grandChange" name="" class="form-control">
+                            </div>
+
+                            <div class="mt-2">
+                                 <button class="rPreview btn btn-success btn-lg" data-toggle="modal" data-target="#rPreview">Pay</button>
+                                 <button class="refresh btn btn-info btn-lg"><a href="automatedInvoice.html" style="text-decoration:none;">Refresh</a></button>
+                            </div>
+                 </div>
+
+
+                               
+
+       </div>
+                      <div class="container-fluid">
+                           <div class="row signRow" style="text-align:center;color:#000000;margin-top:400px">
+                                    <div class="col-md-6">
+                                      <input type="text" class="text-center" id="customerSign">
+                                      <p style="text-align: center">Customer's Name and Signature</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <input type="text" class="text-center" id="attendantSign">
+                                      <p style="text-align: center">Attendant's Name and signature</p>
+                                    </div>
+                               </div>
+                      </div>
+
+
+                      <div id="userDetails" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Welcome</h4>
+                            </div>
+                            <div class="modal-body">
+                              <form class="form"> 
+                                <div class="form-group">
+                                  <label for="customer">Customer's Name:</label>
+                                  <input class="form-control input-lg" type="text" placeholder="Enter customer's name here" name="customer" id="customerName">
+                                </div>
+                                <div class="form-group">
+                                  <label for="attendant">Attendant's Name:</label>
+                                  <input class="form-control input-lg" type="text" placeholder="Enter attendant's name here" name="attendant" id="attendantName" value=>
+                                </div>
+                  
+                                <div class="input-group">
+                                  <input class="form-control input-lg has-feedback" type="text" placeholder="Enter amount here" name="attendant" id="worker" value="BUY MORE" style="color:#ff0000; font-weight:bold;" readonly>
+                                  <span class="input-group-addon ml-2 mt-1" title="edit" style="cursor: pointer" id="workerEdit"><span id="pen" class="fa fa-pencil"></span></span>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-success btn-lg" onclick="modalData()">OK</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+   
+<script>
+    var n = 0;
+
+                  $(window).on("load",function(){
+                  $("#userDetails").modal('show');
+                  $("#workerEdit").click(function(){
+                    if($(this).find("#pen").attr("class")=="fa fa-pencil"){
+                      $("#worker").removeAttr("readonly");
+                      $(this).find("#pen").removeClass("fa fa-pencil");
+                      $(this).find("#pen").addClass("fa fa-user");
+                      $("#worker").focus();
+                    }
+                    else if($(this).find("#pen").attr("class")=="fa fa-user"){
+                      $("#worker").attr("readonly","readonly");
+                      $(this).find("#pen").removeClass("fa fa-user");
+                      $(this).find("#pen").addClass("fa fa-pencil")
+                    }
+                  })
+                })
+
+                  function modalData(){
+                    var customer = $("#customerName").val();
+                    $("#customerSign").val(customer);
+                    var attendant = $("#attendantName").val();
+                    $("#attendantSign").val(attendant);
+                    // var rAmount = $("#amountRecieved").val();
+                    // $("#grandAmount").val(rAmount);
+                  }
+
+                  function createRow()
+                  {
+                         n++;
+                      $('table input').prop('disabled', true);
+                      $('table').append('<tr><td id="sn">'+n+'</td><td><input type="text" class="descClass"></td><td><input type="text" class="quant"></td><td><input type="text" class="price"></td><td><input type="text" class="total" disabled></td><td><span id="editIt" class="fa fa-pencil" font-size="10px" style="margin-left:6px;"></span><span class="trash fa fa-trash" font-size="10px" style="margin-left:4px;"></span></td></tr>');  
+                        $("table input").addClass("form-control");
+                        $(".descClass").focus(); 
+                 }
+
+                 function deleteRow()
+                          {
+                              $("tbody tr").last().remove();
+                              n-=1;
+                              calcTotAfterRowDel();    
+                          };
+
+                function calcTotAfterRowDel()
+                {
+                  var overallTotal2 = 0;
+                  var change2 = 0;
+                  $('.total').each(function(){
+                      if($(this).val() == ""){$(this).val()=0}
+                      overallTotal2 += parseFloat($(this).val());
+                    });
+                    $('#grandTotal').val(overallTotal2);
+                    change2 = $('#grandAmount').val()-overallTotal2;
+                      if(change2<0){
+                        $("#grandChange").css("color","ff0000");
+                      }else{
+                        $("#grandChange").css("color","#000000");
+                      }
+                    $('#grandChange').val(change2);
+                  if(n == -1){
+                    n=0;
+                  }
+                };
+
+    
+                $(document).ready(function(){
+
+                $("#add").click(function(){
+                    if($("table input.form-control").last().val()!==""){
+                    createRow();
+                  }else{
+                        alert("Please fill the empty box(es)");
+                  }
+                      });
+
+
+                     $(document).on('click', '#editIt', function(){
+                            if($(this).attr("class") == "fa fa-pencil"){
+                                $(this).closest("tr").find("input").prop("disabled", false);
+                              }
+                            else{
+                              $(this).closest("tr").find("input").prop("disabled", true)
+                            }
+                            $(this).toggleClass("fa fa-floppy-disk");
+                       });
+                   
+                       $("table").on('input', '.price', function(){
+                           var grand = 0;
+                           var change = 0;
+                           var priceValue = $(this).val();
+                           var quanValue = $(this).closest("tr").find('.quant').val();
+                           var product = priceValue*quanValue;
+                           console.log(product);
+                           $(this).closest('tr').find('.total').val(product);
+
+                           $(".total").each(function(){
+                                var cTotal = $(this).val();
+                                if(cTotal == ""){cTotal = 0;}
+                                grand += parseFloat(cTotal);
+                                if(isNaN(grand)){
+                                  grand = "Expecting a numer on row "+n;
+                                }
+                                change = $("#grandAmount").val() - grand;
+                                if(change<0){
+                                  $("#grandChange").css("color","#ff0000")
+                                }else{
+                                  $("#grandChange").css("color","#000000")
+                                }
+                            });
+                                   
+                                   $("#grandTotal").val(grand);
+                                   $('#grandChange').val(change);
+                    });
+
+                        $("#minus").click(function(){
+                              deleteRow(); 
+                        });
+
+                        $(".rPreview").click(function(){
+                              // $(".changeGroup, .aPaidGroup").remove();
+                              // $(".grandGroup").css({float:"right"});
+                              // $(".signRow").css({clear:'both'});
+                              // $("#customerSign, #attendantSign").css({width:'50%'});
+                              // $("input").css({borderWidth:"0px"});
+                              $("tr").not("#hTitle").each(function(){
+                                  $(this).find("td, th").last().remove();
+                                  $(this).find("td, th").first().remove();
+                              })
+                              $(".rPreview").remove();
+                              // $(".refresh").remove();
+                              $("#add").remove();
+                              $("#minus").remove();
+                                window.print();
+                        });
+
+                       $(document).on('click', '.trash', function(){
+                            $(this).closest("tr").nextAll("tr").each(function(){
+                                var sn = $(this).find("#sn").html();
+                                $(this).find("#sn").html(sn-1);
+                          });
+                            $(this).closest("tr").remove();
+                                calcTotAfterRowDel();
+                                n--;
+                        });
+
+                         $("#grandAmount").keyup(function(){
+                          var amount = 0;
+                            amount = $(this).val();
+                         var grand2 = $("#grandTotal").val();
+                          var change3 = $(this).val() - grand2;
+
+                          $("#grandChange").val(change3);
+                           if(change3 < 0){
+                            $("#grandChange").css("color","#ff0000")
+                          }else{
+                            $("#grandChange").css("color","#000000")
+                          }
+                           $('#grandChange').val(change2);
+                          if(n==-1){
+                            n=0;
+                          }
+                      });
+
+                      //    $(".refresh").click(function(){
+                      //         location.reload();
+                      // });
+
+                    document.addEventListener("keydown",keyHandler,false);
+          });
+
+                 
+
+
+
+                      function keyHandler(e){
+                  if(e.keyCode==13){
+                    if($("table input.form-control").last().val()!==""){
+                      createNewRow();
+                    }else{
+                      alert("Please fill the empty box(es)")
+                    }
+
+                  }
+                  if(e.keyCode==220){
+                      deleteRow();
+                      
+                    }
+                  
+              }
+    
+</script>
+</body>
+</html>
+ 
